@@ -2,7 +2,7 @@ use std::{
   collections::HashMap,
   error::Error as FmtErr,
   fmt::Display,
-  io::{Error, Read}, str::Utf8Error,
+  io::{Error, Read}
 };
 
 use ahqstore_types::{InstallerOptions, InstallerOptionsLinux, InstallerOptionsWin32};
