@@ -57,6 +57,14 @@ impl<T: Read> ExtReader<T> {
     ExtReader { data: file }
   }
 
+  pub fn parse_faillable(self) -> Schema {
+    self.parse().unwrap()
+  }
+
+  pub fn parse_anyhow(self) -> Schema {
+    self.parse().unwrap_or_else(|_| Schema { ver: 0, data: AppFileType::ODat("".into()) })
+  }
+
   pub fn parse(mut self) -> Result<Schema, ParserError> {
     let mut ver = [0u8; 2];
     self.data.read_exact(&mut ver)?;
